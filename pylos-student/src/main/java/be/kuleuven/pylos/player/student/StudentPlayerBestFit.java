@@ -5,10 +5,11 @@ import be.kuleuven.pylos.player.PylosPlayer;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class StudentPlayerBestFit extends PylosPlayer{
-
+    PylosLocation lastPlaced;
     @Override
     public void doMove(PylosGameIF game, PylosBoard board) {
         /* add a reserve sphere to a feasible random location */
@@ -35,6 +36,7 @@ public class StudentPlayerBestFit extends PylosPlayer{
             }
 
             game.moveSphere(moveSphere, moveLocation);
+            lastPlaced=moveLocation;
             return;
         }
 
@@ -55,6 +57,7 @@ public class StudentPlayerBestFit extends PylosPlayer{
             }
 
             game.moveSphere(moveSphere, moveLocation);
+            lastPlaced=moveLocation;
             return;
         }
         //check for any promotions that can be made
@@ -63,6 +66,7 @@ public class StudentPlayerBestFit extends PylosPlayer{
                 for (PylosLocation loc : usableLocations) {
                     if (sphere.canMoveTo(loc)) {
                         game.moveSphere(sphere,loc);
+                        lastPlaced=loc;
                         return;
                     }
                 }
@@ -88,6 +92,7 @@ public class StudentPlayerBestFit extends PylosPlayer{
         }
         PylosSphere moveSphere = board.getReserve(this);
         game.moveSphere(moveSphere, moveLocation);
+        lastPlaced=moveLocation;
     }
 
     private ArrayList<PylosLocation> searchSquares(ArrayList<PylosLocation> usableLocations,PylosPlayer player) {
@@ -112,11 +117,18 @@ public class StudentPlayerBestFit extends PylosPlayer{
                 removableSpheres.add(ps);
             }
         }
-        PylosSphere sphereToRemove;
+        PylosSphere sphereToRemove=null;
         if (removableSpheres.size() == 1) {
             sphereToRemove = removableSpheres.get(0);
         } else {
-            sphereToRemove = removableSpheres.get(getRandom().nextInt(removableSpheres.size() - 1));
+            for(PylosSquare ps : board.getAllSquares()){
+                if(ps.isSquare(this)&&Arrays.asList(ps.getLocations()).contains(lastPlaced)){
+                    for(PylosLocation loc :ps.getLocations()){
+                        if (!loc.equals(lastPlaced)&&loc.getSphere().canMove())sphereToRemove=loc.getSphere();
+                    }
+                    if(sphereToRemove==null)sphereToRemove=lastPlaced.getSphere();
+                }
+            }
         }
         game.removeSphere(sphereToRemove);
     }
