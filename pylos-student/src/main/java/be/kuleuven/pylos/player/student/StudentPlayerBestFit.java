@@ -3,6 +3,7 @@ package be.kuleuven.pylos.player.student;
 import be.kuleuven.pylos.game.*;
 import be.kuleuven.pylos.player.PylosPlayer;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -56,26 +57,37 @@ public class StudentPlayerBestFit extends PylosPlayer{
             game.moveSphere(moveSphere, moveLocation);
             return;
         }
-
         //check for any promotions that can be made
-
-        //avoid any spots that will lead to opponent promoting
-
-
-        allLocations = board.getLocations();
-        PylosSphere reserve = null;
-
-        int loc = -1;
-        boolean okLocation = false;
-        reserve = board.getReserve(this);
-        while(!okLocation){
-
-            loc = getRandom().nextInt(30);
-            okLocation= allLocations[loc].isUsable();
-
-
+        for(PylosSphere sphere: board.getSpheres(this)){
+            if(!sphere.isReserve()) {
+                for (PylosLocation loc : usableLocations) {
+                    if (sphere.canMoveTo(loc)) {
+                        game.moveSphere(sphere,loc);
+                        return;
+                    }
+                }
+            }
         }
-        game.moveSphere(reserve, allLocations[loc]);
+        //avoid any spots that will lead to opponent promoting
+        ArrayList<PylosLocation> goodLocations = new ArrayList<>();
+        ArrayList<PylosLocation> worseLocations = new ArrayList<>();
+        PylosLocation moveLocation;
+
+        for(PylosLocation loc : usableLocations){
+            for(PylosSquare ps : loc.getSquares()){
+                if(ps.getInSquare()<3)goodLocations.add(loc);
+                else worseLocations.add(loc);
+            }
+        }
+        if(goodLocations.size()>0){
+            Collections.shuffle(goodLocations);
+            moveLocation = goodLocations.get(0);
+        }else{
+            Collections.shuffle(worseLocations);
+            moveLocation = worseLocations.get(0);
+        }
+        PylosSphere moveSphere = board.getReserve(this);
+        game.moveSphere(moveSphere, moveLocation);
     }
 
     private ArrayList<PylosLocation> searchSquares(ArrayList<PylosLocation> usableLocations,PylosPlayer player) {
