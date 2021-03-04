@@ -18,7 +18,7 @@ public class StudentPlayerBestFit extends PylosPlayer{
         }
 
         //first check if there are any squares that can be made
-        ArrayList<PylosLocation> squareLocations = searchSquares(usableLocations);
+        ArrayList<PylosLocation> squareLocations = searchSquares(usableLocations, this);
         if(squareLocations.size()>0){
             Collections.shuffle(squareLocations);
             PylosLocation moveLocation = squareLocations.get(0);
@@ -38,6 +38,24 @@ public class StudentPlayerBestFit extends PylosPlayer{
         }
 
         //then check if there are any squares the opponent can make
+        ArrayList<PylosLocation> opponentSquareLocations = searchSquares(usableLocations, this.OTHER);
+        if(opponentSquareLocations.size()>0){
+            Collections.shuffle(opponentSquareLocations);
+            PylosLocation moveLocation = opponentSquareLocations.get(0);
+            PylosSphere[] spheres = board.getSpheres(this);
+            PylosSphere moveSphere=null;
+            for(PylosSphere sphere : spheres){
+                if(sphere.canMoveTo(moveLocation) && !sphere.isReserve()){
+                    moveSphere = sphere;
+                }
+            }
+            if (moveSphere==null){
+                moveSphere= board.getReserve(this);
+            }
+
+            game.moveSphere(moveSphere, moveLocation);
+            return;
+        }
 
         //check for any promotions that can be made
 
@@ -60,11 +78,11 @@ public class StudentPlayerBestFit extends PylosPlayer{
         game.moveSphere(reserve, allLocations[loc]);
     }
 
-    private ArrayList<PylosLocation> searchSquares(ArrayList<PylosLocation> usableLocations) {
+    private ArrayList<PylosLocation> searchSquares(ArrayList<PylosLocation> usableLocations,PylosPlayer player) {
         ArrayList<PylosLocation> squareLocations = new ArrayList<>();
         for(PylosLocation loc: usableLocations){
             for(PylosSquare sq : loc.getSquares()){
-                if(sq.getInSquare(this)==3){
+                if(sq.getInSquare(player)==3){
                     squareLocations.add(loc);
                     break;
                 }
