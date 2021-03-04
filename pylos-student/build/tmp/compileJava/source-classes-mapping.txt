@@ -1,0 +1,13 @@
+be/kuleuven/pylos/player/student/StudentPlayerBestFit.java
+ be.kuleuven.pylos.player.student.StudentPlayerBestFit
+be/kuleuven/pylos/player/student/StudentPlayer.java
+ be.kuleuven.pylos.player.student.StudentPlayer
+be/kuleuven/pylos/player/student/PlayerFactoryStudent.java
+ be.kuleuven.pylos.player.student.PlayerFactoryStudent
+ be.kuleuven.pylos.player.student.PlayerFactoryStudent$1
+ be.kuleuven.pylos.player.student.PlayerFactoryStudent$2
+ be.kuleuven.pylos.player.student.PlayerFactoryStudent$3
+be/kuleuven/pylos/player/student/StudentPlayerRandomFit.java
+ be.kuleuven.pylos.player.student.StudentPlayerRandomFit
+be/kuleuven/pylos/main/PylosMain.java
+ be.kuleuven.pylos.main.PylosMain

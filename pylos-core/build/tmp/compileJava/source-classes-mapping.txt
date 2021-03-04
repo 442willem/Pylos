@@ -1,0 +1,54 @@
+be/kuleuven/pylos/game/PylosGameType.java
+ be.kuleuven.pylos.game.PylosGameType
+be/kuleuven/pylos/game/PylosSquare.java
+ be.kuleuven.pylos.game.PylosSquare
+be/kuleuven/pylos/game/PylosPlayerColor.java
+ be.kuleuven.pylos.game.PylosPlayerColor
+be/kuleuven/pylos/player/codes/PlayerFactoryCodes.java
+ be.kuleuven.pylos.player.codes.PlayerFactoryCodes
+ be.kuleuven.pylos.player.codes.PlayerFactoryCodes$1
+be/kuleuven/pylos/player/PylosPlayerType.java
+ be.kuleuven.pylos.player.PylosPlayerType
+be/kuleuven/pylos/game/PylosGameSimulator.java
+ be.kuleuven.pylos.game.PylosGameSimulator
+be/kuleuven/pylos/player/PylosPlayerFactory.java
+ be.kuleuven.pylos.player.PylosPlayerFactory
+be/kuleuven/pylos/game/PylosGameIF.java
+ be.kuleuven.pylos.game.PylosGameIF
+be/kuleuven/pylos/game/PylosBoard.java
+ be.kuleuven.pylos.game.PylosBoard
+be/kuleuven/pylos/game/PylosLocation.java
+ be.kuleuven.pylos.game.PylosLocation
+be/kuleuven/pylos/game/PylosGameState.java
+ be.kuleuven.pylos.game.PylosGameState
+be/kuleuven/pylos/game/PylosSphere.java
+ be.kuleuven.pylos.game.PylosSphere
+be/kuleuven/pylos/battle/Battle.java
+ be.kuleuven.pylos.battle.Battle
+be/kuleuven/pylos/player/PylosPlayer.java
+ be.kuleuven.pylos.player.PylosPlayer
+be/kuleuven/pylos/player/codes/PylosPlayerBestFit.java
+ be.kuleuven.pylos.player.codes.PylosPlayerBestFit
+ be.kuleuven.pylos.player.codes.PylosPlayerBestFit$1
+ be.kuleuven.pylos.player.codes.PylosPlayerBestFit$2
+ be.kuleuven.pylos.player.codes.PylosPlayerBestFit$3
+ be.kuleuven.pylos.player.codes.PylosPlayerBestFit$4
+ be.kuleuven.pylos.player.codes.PylosPlayerBestFit$5
+be/kuleuven/pylos/game/PylosGameObserver.java
+ be.kuleuven.pylos.game.PylosGameObserver
+ be.kuleuven.pylos.game.PylosGameObserver$1
+ be.kuleuven.pylos.game.PylosGameObserver$2
+be/kuleuven/pylos/player/codes/PylosPlayerMiniMax.java
+ be.kuleuven.pylos.player.codes.PylosPlayerMiniMax
+ be.kuleuven.pylos.player.codes.PylosPlayerMiniMax$1
+be/kuleuven/pylos/player/PylosPlayerObserver.java
+ be.kuleuven.pylos.player.PylosPlayerObserver
+ be.kuleuven.pylos.player.PylosPlayerObserver$1
+ be.kuleuven.pylos.player.PylosPlayerObserver$2
+be/kuleuven/pylos/game/PylosGame.java
+ be.kuleuven.pylos.game.PylosGame
+ be.kuleuven.pylos.game.PylosGame$1
+be/kuleuven/pylos/battle/BattleMain.java
+ be.kuleuven.pylos.battle.BattleMain
+be/kuleuven/pylos/player/codes/PylosPlayerRandomFit.java
+ be.kuleuven.pylos.player.codes.PylosPlayerRandomFit
